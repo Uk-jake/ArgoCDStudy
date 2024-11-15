@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+build:
+  artifacts:
+    - image: ukjang/goimg
+      docker:
+        dockerfile: ./Dockerfile
+
+  tagPolicy:
+    dateTime: {}
+
+  local:
+    push: true
+
+deploy:
+  kubectl:
+    manifests:
+      - skaffold-*
