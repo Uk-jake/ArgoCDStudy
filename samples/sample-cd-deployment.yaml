@@ -1,0 +1,20 @@
+apiVersion: apps/v1 # API 버전 지정
+kind: Deployment # 리소스 종류를 Deployment로 지정
+
+metadata:
+  name: sample-cd-deployment # Deployment 이름 지정
+
+spec:
+  replicas: 3 # 레플리카 개수를 3으로 설정
+  selector:
+    matchLabels:
+      app: sample-cd-app
+  template:
+    metadata:
+      labels:
+        app: sample-cd-app # Pod의 레이블을 설정, selector와 일치해야 함
+    spec:
+      containers:
+        - name: nginx-container # 컨테이너 이름 지정
+          image: nginx # nginx 이미지를 사용하는 컨테이너 정의
+
